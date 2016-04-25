@@ -1,0 +1,46 @@
+@(detail:List[String],costList:List[Int],total:Int,serviceTax:Int,vat:Int,totalBill:Int)
+<title>Bill</title>
+<script lang="javascript">
+ function orderCancel(){
+  window.location="/cancel"
+ }
+</script>
+<form name="form" method="post">
+<table>
+<tr>
+ <td>Customer Name:</td>
+ <td colspan="2"><input type="text" name="custName" size="40" required></td>
+</tr>
+@for(order<- 0 to detail.length-1){
+ <tr>
+ <td>@detail(order)</td>
+  <td>@costList(order)</td>
+  </tr>
+}
+ <tr>
+  <td>Order Total</td>
+  <td>@total</td>
+ </tr>
+ <tr>
+  <td>Service Tax(5%)</td>
+  <td>@serviceTax</td>
+ </tr>
+ <tr>
+  <td>Vat (6%)</td>
+  <td> @vat</td>
+ </tr>
+ <tr>
+  <td>Total </td>
+  <td>@totalBill</td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><input type="submit" value="Pay bill" onclick="form.action='/print'"></td>
+  <td><input type="submit" value="Cancel Order" onclick="orderCancel()"></td>
+ </tr>
+ </table>
+ <input type="hidden" name="total" value='@totalBill'>
+</form>
+<p>
+ <a href="/home">Add Pizza</a>
+</p>

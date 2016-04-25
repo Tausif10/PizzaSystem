@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script lang="javascript">
+        function Redirect() {
+               window.location="/bill";
+            }
+    </script>
+</head>
+<body background="assets/images/home.jpeg" length="30%">
+<center><h1><font color="red"> Pizza Hut</font></h1></center>
+<hr>
+<form method="post" name="form">
+   <center> <table border="1" cellpadding="4">
+
+        <tr>
+            <td colspan="2"><font color="Green">Pizza Details</font></td>
+        </tr>
+
+       <tr>
+           <td>Quantity</td>
+           <td><input type="number" name="quantity" min="1" required></td>
+       </tr>
+
+        <tr>
+            <td><b>Size</b></td>
+            <td><select name="Size" required >
+                <option value="" disabled selected>Select Size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select></td>
+        </tr>
+
+        <tr>
+            <td><b>Pizza Base</b></td>
+            <td><select name="base" required>
+                    <option value="" disabled selected>Select Base</option>
+                    <option value="Normal">Normal</option>
+                    <option value="Pan Crust">Pan Crust</option>
+                    <option value="Thin Crust">Thin Crust</option>
+                    <option value="Cheesy Bites">Cheesy Bites</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><b>Sauce</b></td>
+            <td><select name="sauce" required>
+                <option value="" disabled selected>Select sauce</option>
+                <option value="Margarita">Margarita</option>
+                <option value="Mexican Salsa">Mexican Salsa</option>
+            </select></td>
+        </tr>
+        <td><b>Topping</b></td>
+        <td><table>
+            <tr>
+            <td><input type="checkbox" name="Topping" value="Capsicum" checked>Capsicum </td>
+                <td><input type="checkbox" name="Topping" value="Onion">Onion </td>
+                <td><input type="checkbox" name="Topping" value="Tomato">Tomato</td>
+            </tr>
+
+            <tr>
+            <td><input type="checkbox" name="Topping" value="Corn" >Corn </td>
+                <td><input type="checkbox" name="Topping" value="Baby Corn">Baby Corn</td>
+                <td> <input type="checkbox" name="Topping" value="Jalapeno">Jalapeno</td>
+            </tr>
+
+            <tr>
+                <td><input type="checkbox" name="Topping" value="Black Olive" >Black Olive </td>
+                <td><input type="checkbox" name="Topping" value="Paneer">Paneer</td>
+                <td> <input type="checkbox" name="Topping" value="Red Pepper">Red Pepper</td>
+            </tr>
+
+        </table>
+        </td>
+        <tr>
+            <td><b>Cheese:</b></td>
+            <td>
+                <select name="cheese" required>
+                    <option value="" disabled selected>Select Cheese</option>
+                    <option value="Mozzarella">Mozzarella</option>
+                    <option value="Cream">Cream</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Add Pizza" onclick="form.action='/addPizza'">
+                <input type="button" value="Get Bill" id="bill" onclick="Redirect()">
+                <input type="reset"></td>
+        </tr>
+    </table></center>
+</form>
+</body>
+</html>
