@@ -1,0 +1,90 @@
+
+@(item:String,chkList:List[String],sizes:List[String],msg:String,types:List[String],details:List[String],cost:List[Int],typeSize:List[String])
+<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/newHome.css")">
+
+<script lang="javascript">
+
+    function fun(){
+    form=document.getElementById("form");
+    form.action='/filter'
+    form.submit()
+    }
+
+</script>
+
+<head>
+    <meta charset="UTF-8">
+    <title>New Home</title>
+</head>
+
+<body>
+<form method="get" action="/search" id="form" name="form">
+<div>
+    <div id="head">
+        <h1>Pizza Hut</h1>
+    </div>
+
+    <div style="margin-top:10px">
+      <p></p>
+        <center> <input type="search" placeholder="Search item" name="item" size="100%" autofocus value='@item'>
+        <input type="submit" id="searchBtn" value="Search"></center>
+    </div>
+
+    @if(sizes.length!=0){
+    <div>
+        <h4>Refine result:</h4>
+            <div id="header">
+                <h3><b>&nbsp;&nbsp;&nbsp;&nbsp;Size</b></h3>
+                @for(i<-0 to sizes.length-1){
+                <div class="content">
+                    @if(chkList.contains(sizes(i))){
+                    <input type="checkbox" id='@sizes(i)' onchange="fun()" name="size" value="@sizes(i)" checked><label for='@sizes(i)' >@sizes(i).charAt(0).toUpper@sizes(i).substring(1)</label><br>
+
+                    }else{
+                    <input type="checkbox" id='@sizes(i)' onchange="fun()" name="size" value="@sizes(i)"><label for='@sizes(i)' >@sizes(i).charAt(0).toUpper@sizes(i).substring(1)</label><br>
+                    }
+
+                </div>
+                }
+            </div>
+    </div>
+
+    <div id="description">
+
+        @if(types.length<=0){
+        <h3>No result found</h3>
+        }
+        @for(i<-0 to types.length-1){
+            <a href="" id="types">@types(i)<br></a>
+
+        <p></p>
+
+        <tr>
+            <td><b>Detail:</b></td>
+            <td>@details(i)</td>
+        </tr><br>
+
+        <tr>
+            <td><b>Size:</b></td>
+            <td>@typeSize(i)</td>
+        </tr><br>
+        <tr>
+            <td><b>Price:</b></td>
+            <td>@cost(i)</td>
+            <td><a href="/addtoCart?item=@item&size=@typeSize(i)&base=@types(i)&total=@cost(i)&Topping=@details(i)" ><input type="button" value="Add to Cart" onclick="form.method='POST'"></a>
+            </td>
+        </tr>
+
+        @if(i!=types.length-1){
+        <hr>
+        }
+        }
+    </div>
+
+
+    }else{
+    <h1>@msg</h1>
+    }
+</div>
+</form>
+</body>

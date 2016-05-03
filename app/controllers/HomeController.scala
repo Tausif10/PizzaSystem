@@ -1,6 +1,6 @@
 package controllers
 
-import java.sql.DriverManager
+import java.sql.{ResultSet, DriverManager}
 import javax.inject._
 import play.api._
 import play.api.mvc._
@@ -13,7 +13,7 @@ class HomeController @Inject() extends Controller {
   }
   def home=  Action{
 
-      Ok(views.html.home())
+      Ok(views.html.newHome("",Nil,Nil,"",Nil,Nil,Nil,Nil))
   }
 
 

@@ -22,6 +22,8 @@ class BillController extends Controller {
       val st=con.createStatement()
 
       val orderId=request.session.get("orderID").getOrElse("")
+      val item=request.getQueryString("item").getOrElse("")
+      println("bill add item "+item)
       if(orderId.isEmpty)
         {
           Ok(views.html.noOrder());
@@ -44,7 +46,7 @@ class BillController extends Controller {
         val vat = pizza.getVat(sum)
         val total = pizza.getTotal(sum)
 
-        Ok(views.html.bill(detailList,costList,sum, serviceTax, vat, total))
+        Ok(views.html.bill(item.toString,detailList,costList,sum, serviceTax, vat, total))
       }
 
 

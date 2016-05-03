@@ -27,7 +27,7 @@ class PrintBillController extends Controller{
       val sql="insert into order1 values("+orderId+",'"+custName+"',"+paymentId+","+totalBill+","+"'"+date+"')"
       st.executeUpdate(sql)
 
-      Ok(views.html.home()).withNewSession
+      Ok(views.html.newHome("",Nil,Nil,"",Nil,Nil,Nil,Nil)).withNewSession
   }
 
 }

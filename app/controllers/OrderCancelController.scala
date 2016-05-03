@@ -11,6 +11,7 @@ class OrderCancelController extends Controller{
     Class.forName("com.mysql.jdbc.Driver")
     val connection=DriverManager.getConnection("jdbc:mysql://localhost/pizzasystem","root","tausif")
     val orderId=request.session.get("orderID").getOrElse("")
+      val item=request.getQueryString("item").getOrElse("")
     if(orderId.isEmpty){
       Ok(views.html.error())
     }else{
@@ -18,7 +19,7 @@ class OrderCancelController extends Controller{
       val query="delete from order_detail where detail_id="+orderId.toInt
       val orderNo=st.executeUpdate(query)
       println("order deleted "+orderNo)
-      Ok(views.html.orderCancel()).withNewSession
+      Ok(views.html.orderCancel(item)).withNewSession
     }
   }
 

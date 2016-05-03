@@ -1,15 +1,19 @@
-@(detail:List[String],costList:List[Int],total:Int,serviceTax:Int,vat:Int,totalBill:Int)
+@(item:String,detail:List[String],costList:List[Int],total:Int,serviceTax:Int,vat:Int,totalBill:Int)
 <title>Bill</title>
 <script lang="javascript">
  function orderCancel(){
-  window.location="/cancel"
+  if(document.getElementById("cust")!="")
+  {
+      document.getElementById("cust").value="";
+  }
+  window.location="/cancel?item=@item"
  }
 </script>
 <form name="form" method="post">
 <table>
 <tr>
  <td>Customer Name:</td>
- <td colspan="2"><input type="text" name="custName" size="40" required></td>
+ <td colspan="2"><input type="text" id="cust" name="custName" size="40" required></td>
 </tr>
 @for(order<- 0 to detail.length-1){
  <tr>
@@ -36,11 +40,11 @@
  <tr>
   <td></td>
   <td><input type="submit" value="Pay bill" onclick="form.action='/print'"></td>
-  <td><input type="submit" value="Cancel Order" onclick="orderCancel()"></td>
+  <td><input type="button" value="Cancel Order" onclick="orderCancel()"></td>
  </tr>
  </table>
  <input type="hidden" name="total" value='@totalBill'>
 </form>
 <p>
- <a href="/home">Add Pizza</a>
+ <a href="/filter?item=@item">Add Pizza</a>
 </p>

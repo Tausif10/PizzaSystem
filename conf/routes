@@ -21,3 +21,11 @@ POST  /addPizza                    controllers.AddPizzaController.addPizza
 POST  /print                        controllers.PrintBillController.printBill
 
 GET  /cancel                       controllers.OrderCancelController.cancelOrder
+
+GET  /search                        controllers.SearchController.search
+
+GET  /filter                      controllers.FilterController.filter
+
+GET  /addtoCart                   controllers.AddtoCart.addPizza
+
+GET  /getBill                      controllers.BillController.bill
